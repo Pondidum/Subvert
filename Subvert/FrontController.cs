@@ -4,9 +4,9 @@ using System.Web.Http;
 
 namespace Subvert
 {
-	internal class EndpointFrontController : ApiController
+	internal class FrontController : ApiController
 	{
-		public EndpointFrontController()
+		public FrontController()
 		{
 
 		}

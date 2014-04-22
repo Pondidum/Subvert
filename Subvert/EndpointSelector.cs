@@ -7,22 +7,24 @@ using System.Web.Http.Dispatcher;
 
 namespace Subvert
 {
-	internal class EndpointSelector : IHttpControllerSelector
+	internal class EndpointSelector<TController> : IHttpControllerSelector where TController : ApiController
 	{
-		private readonly HttpConfiguration _config;
+		private readonly HttpControllerDescriptor _controller;
 
 		public EndpointSelector(HttpConfiguration config)
 		{
-			_config = config;
+			var  controllerType = typeof(TController);
+
+			_controller = new HttpControllerDescriptor(
+				config,
+				controllerType.Name,
+				controllerType
+			);
 		}
 
 		public HttpControllerDescriptor SelectController(HttpRequestMessage request)
 		{
-			return new HttpControllerDescriptor(
-				_config,
-				"EndpointFrontController",
-				typeof(EndpointFrontController)
-				);
+			return _controller;
 		}
 
 		public IDictionary<string, HttpControllerDescriptor> GetControllerMapping()

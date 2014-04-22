@@ -8,7 +8,7 @@ namespace Subvert
 	{
 		public HttpActionDescriptor SelectAction(HttpControllerContext controllerContext)
 		{
-			var type = typeof(EndpointFrontController);
+			var type = typeof(FrontController);
 			var method = type.GetMethod("Handle");
 
 			return new ReflectedHttpActionDescriptor(

@@ -9,7 +9,7 @@ namespace Subvert
 		public static void Configuration(HttpConfiguration config)
 		{
 			config.Services.Replace(typeof(IHttpActionSelector), new EndpointActionSelector());
-			config.Services.Replace(typeof(IHttpControllerSelector), new EndpointSelector(config));
+			config.Services.Replace(typeof(IHttpControllerSelector), new EndpointSelector<FrontController>(config));
 		}
 	}
 }
