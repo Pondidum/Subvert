@@ -7,7 +7,7 @@ using System.Web.Http.Dispatcher;
 
 namespace Subvert
 {
-	public class EndpointSelector : IHttpControllerSelector
+	internal class EndpointSelector : IHttpControllerSelector
 	{
 		private readonly HttpConfiguration _config;
 

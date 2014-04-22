@@ -4,7 +4,7 @@ using System.Web.Http.Controllers;
 
 namespace Subvert
 {
-	public class EndpointActionSelector : IHttpActionSelector
+	internal class EndpointActionSelector : IHttpActionSelector
 	{
 		public HttpActionDescriptor SelectAction(HttpControllerContext controllerContext)
 		{
