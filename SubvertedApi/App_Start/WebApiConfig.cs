@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Web.Http;
+﻿using System.Web.Http;
+using Subvert;
 
 namespace SubvertedApi
 {
@@ -10,8 +9,7 @@ namespace SubvertedApi
 		{
 			config.Routes.MapHttpRoute(
 				name: "DefaultApi",
-				routeTemplate: "api/{controller}/{id}",
-				defaults: new { id = RouteParameter.Optional }
+				routeTemplate: "{*url}"
 			);
 
 			// Uncomment the following line of code to enable query support for actions with an IQueryable or IQueryable<T> return type.
@@ -22,6 +20,9 @@ namespace SubvertedApi
 			// To disable tracing in your application, please comment out or remove the following line of code
 			// For more information, refer to: http://www.asp.net/web-api
 			config.EnableSystemDiagnosticsTracing();
+
+			SubvertThis.Configuration(config);
+
 		}
 	}
 }
