@@ -64,6 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Features\Home\HomeEndpoint.cs" />
+    <Compile Include="Features\Home\HomeInputModel.cs" />
+    <Compile Include="Features\Home\HomeViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
