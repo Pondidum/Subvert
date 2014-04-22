@@ -54,7 +54,7 @@
     <Compile Include="EndpointFrontController.cs" />
     <Compile Include="EndpointSelector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Subvert.cs" />
+    <Compile Include="SubvertThis.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
