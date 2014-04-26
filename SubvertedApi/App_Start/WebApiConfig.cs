@@ -21,7 +21,7 @@ namespace SubvertedApi
 			// For more information, refer to: http://www.asp.net/web-api
 			config.EnableSystemDiagnosticsTracing();
 
-			SubvertThis.Configuration(config);
+			SubvertThis.Configuration(typeof(WebApiConfig), config);
 
 		}
 	}
