@@ -60,6 +60,7 @@
     <Compile Include="EndpointActionSelector.cs" />
     <Compile Include="FrontController.cs" />
     <Compile Include="EndpointSelector.cs" />
+    <Compile Include="HostAssembly.cs" />
     <Compile Include="IJsonSerializer.cs" />
     <Compile Include="Infrastructure\StructureMapDependencyResolver.cs" />
     <Compile Include="Infrastructure\StructureMapDependencyScope.cs" />
