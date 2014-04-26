@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EndpointActionSelector.cs" />
+    <Compile Include="EndpointDiscovery.cs" />
     <Compile Include="FrontController.cs" />
     <Compile Include="EndpointSelector.cs" />
     <Compile Include="HostAssembly.cs" />
