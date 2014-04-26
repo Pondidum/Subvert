@@ -18,7 +18,6 @@ namespace Subvert
 				{
 					a.TheCallingAssembly();
 					a.LookForRegistries();
-					a.WithDefaultConventions();
 				});
 
 				c.For<HostAssembly>()

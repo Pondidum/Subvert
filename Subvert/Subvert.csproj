@@ -63,6 +63,7 @@
     <Compile Include="IJsonSerializer.cs" />
     <Compile Include="Infrastructure\StructureMapDependencyResolver.cs" />
     <Compile Include="Infrastructure\StructureMapDependencyScope.cs" />
+    <Compile Include="InternalRegistry.cs" />
     <Compile Include="JsonSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubvertThis.cs" />
