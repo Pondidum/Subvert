@@ -68,6 +68,7 @@
     <Compile Include="InternalRegistry.cs" />
     <Compile Include="JsonSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RouteConvention.cs" />
     <Compile Include="Router.cs" />
     <Compile Include="SubvertThis.cs" />
   </ItemGroup>

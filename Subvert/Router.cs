@@ -1,20 +1,23 @@
 ﻿using System;
-using System.Linq;
 
 namespace Subvert
 {
 	public class Router
 	{
 		private readonly EndpointDiscovery _endpoints;
+		private readonly RouteConvention _convention;
 
-		public Router(EndpointDiscovery endpoints)
+		public Router(EndpointDiscovery endpoints, RouteConvention convention)
 		{
 			_endpoints = endpoints;
+			_convention = convention;
 		}
 
-		public Type GetEndpointForRoute(string route)
+		public Type GetEndpointForRoute(Uri route)
 		{
-			return _endpoints.GetEndpoints().First();
+			var endpointName = _convention.GetEndpointName(route);
+
+			return _endpoints.GetEndpointByName(endpointName);
 		}
 	}
 }

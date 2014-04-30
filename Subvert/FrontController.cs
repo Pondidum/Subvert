@@ -13,7 +13,6 @@ namespace Subvert
 	{
 		private readonly Router _router;
 		private readonly IJsonSerializer _serializer;
-		private readonly Container _container;
 
 		public FrontController(Router router, IJsonSerializer serializer)
 		{
@@ -23,7 +22,13 @@ namespace Subvert
 
 		public HttpResponseMessage Handle()
 		{
-			var endpoint = _router.GetEndpointForRoute(Request.RequestUri.PathAndQuery);
+			var endpoint = _router.GetEndpointForRoute(Request.RequestUri);
+
+			if (endpoint == null)
+			{
+				return new HttpResponseMessage(HttpStatusCode.NotFound);
+			}
+
 			var method = endpoint.GetMethod("Get");
 			var modelType = method.GetParameters().First().ParameterType;
 
