@@ -13,11 +13,13 @@ namespace Subvert
 	{
 		private readonly Router _router;
 		private readonly IJsonSerializer _serializer;
+		private readonly IContainer _container;
 
-		public FrontController(Router router, IJsonSerializer serializer)
+		public FrontController(Router router, IJsonSerializer serializer, IContainer container)
 		{
 			_router = router;
 			_serializer = serializer;
+			_container = container;
 		}
 
 		public HttpResponseMessage Handle()
@@ -34,7 +36,7 @@ namespace Subvert
 
 			var modelInstance = modelType.GetConstructor(Type.EmptyTypes).Invoke(new object[] { });
 
-			var instance = endpoint.GetConstructor(Type.EmptyTypes).Invoke(new object[] { });
+			var instance = _container.GetInstance(endpoint);
 
 			var viewModel = method.Invoke(instance, new[] { modelInstance });
 
