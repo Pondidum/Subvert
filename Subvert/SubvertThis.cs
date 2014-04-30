@@ -30,7 +30,7 @@ namespace Subvert
 			config.Services.Replace(typeof(IHttpActionSelector), new EndpointActionSelector());
 			config.Services.Replace(typeof(IHttpControllerSelector), new EndpointSelector<FrontController>(config));
 
-
+			config.Routes.MapHttpRoute(name: "Subvert.Route", routeTemplate: "{*url}");
 		}
 	}
 }
