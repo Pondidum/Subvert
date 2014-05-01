@@ -71,6 +71,9 @@
     <Compile Include="RouteConvention.cs" />
     <Compile Include="Router.cs" />
     <Compile Include="SubvertThis.cs" />
+    <Compile Include="ViewRendering\IViewRenderer.cs" />
+    <Compile Include="ViewRendering\JsonViewRenderer.cs" />
+    <Compile Include="ViewRendering\ViewRendererFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

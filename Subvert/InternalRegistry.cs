@@ -1,6 +1,6 @@
-﻿using System.Reflection;
-using StructureMap.Configuration.DSL;
+﻿using StructureMap.Configuration.DSL;
 using StructureMap.Graph;
+using Subvert.ViewRendering;
 
 namespace Subvert
 {
@@ -12,10 +12,15 @@ namespace Subvert
 			{
 				s.TheCallingAssembly();
 				s.WithDefaultConventions();
+
+				s.AddAllTypesOf<IViewRenderer>();
 			});
 
 			For<EndpointDiscovery>()
 				.Singleton();
+
+			For<ViewRendererFactory>()
+				.Use(x => new ViewRendererFactory(x.GetAllInstances<IViewRenderer>()));
 		}
 	}
 }

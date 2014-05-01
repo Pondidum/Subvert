@@ -1,24 +1,22 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Reflection;
-using System.Text;
 using System.Web.Http;
 using StructureMap;
+using Subvert.ViewRendering;
 
 namespace Subvert
 {
 	internal class FrontController : ApiController
 	{
 		private readonly Router _router;
-		private readonly IJsonSerializer _serializer;
+		private readonly ViewRendererFactory _rendererFactory;
 		private readonly IContainer _container;
 
-		public FrontController(Router router, IJsonSerializer serializer, IContainer container)
+		public FrontController(Router router, ViewRendererFactory rendererFactory, IContainer container)
 		{
 			_router = router;
-			_serializer = serializer;
+			_rendererFactory = rendererFactory;
 			_container = container;
 		}
 
@@ -36,16 +34,11 @@ namespace Subvert
 
 			var inputModel = _container.GetInstance(modelType);
 			var instance = _container.GetInstance(endpoint);
-
 			var viewModel = method.Invoke(instance, new[] { inputModel });
 
-			//content negotiation to work out how to send it back...json for now
+			var renderer = _rendererFactory.ForContentType(Request.Headers.Accept);
 
-			var json = _serializer.Serialize(viewModel);
-			return new HttpResponseMessage(HttpStatusCode.OK)
-			{
-				Content = new StringContent(json, Encoding.UTF8, "text/json")
-			};
+			return renderer.Render(viewModel);
 		}
 	}
 }
