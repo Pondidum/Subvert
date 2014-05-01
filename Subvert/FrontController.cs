@@ -34,11 +34,10 @@ namespace Subvert
 			var method = endpoint.GetMethod("Get");
 			var modelType = method.GetParameters().First().ParameterType;
 
-			var modelInstance = modelType.GetConstructor(Type.EmptyTypes).Invoke(new object[] { });
-
+			var inputModel = _container.GetInstance(modelType);
 			var instance = _container.GetInstance(endpoint);
 
-			var viewModel = method.Invoke(instance, new[] { modelInstance });
+			var viewModel = method.Invoke(instance, new[] { inputModel });
 
 			//content negotiation to work out how to send it back...json for now
 
