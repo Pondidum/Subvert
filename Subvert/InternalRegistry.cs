@@ -18,9 +18,6 @@ namespace Subvert
 
 			For<EndpointDiscovery>()
 				.Singleton();
-
-			For<ViewRendererFactory>()
-				.Use(x => new ViewRendererFactory(x.GetAllInstances<IViewRenderer>()));
 		}
 	}
 }
