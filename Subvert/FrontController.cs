@@ -32,13 +32,16 @@ namespace Subvert
 			var method = endpoint.GetMethod("Get");
 			var modelType = method.GetParameters().First().ParameterType;
 
-			var inputModel = _container.GetInstance(modelType);
-			var instance = _container.GetInstance(endpoint);
-			var viewModel = method.Invoke(instance, new[] { inputModel });
+			using (var container = _container.GetNestedContainer())
+			{
+				var inputModel = container.GetInstance(modelType);
+				var instance = container.GetInstance(endpoint);
+				var viewModel = method.Invoke(instance, new[] { inputModel });
 
-			var renderer = _rendererFactory.ForContentType(Request.Headers.Accept);
+				var renderer = _rendererFactory.ForContentType(Request.Headers.Accept);
 
-			return renderer.Render(viewModel);
+				return renderer.Render(viewModel);
+			}
 		}
 	}
 }
