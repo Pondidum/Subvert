@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subvert", "Subvert\Subvert.csproj", "{128FB5DE-FF48-42F9-ACD3-24B557316B0F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubvertedApi", "SubvertedApi\SubvertedApi.csproj", "{3C85AAC3-1441-4D1F-8C93-9FF16008B9A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subvert.Tests", "Subvert.Tests\Subvert.Tests.csproj", "{F36CC47E-B377-44A9-806C-3185E0112F9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{3C85AAC3-1441-4D1F-8C93-9FF16008B9A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C85AAC3-1441-4D1F-8C93-9FF16008B9A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C85AAC3-1441-4D1F-8C93-9FF16008B9A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F36CC47E-B377-44A9-806C-3185E0112F9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F36CC47E-B377-44A9-806C-3185E0112F9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F36CC47E-B377-44A9-806C-3185E0112F9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F36CC47E-B377-44A9-806C-3185E0112F9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
