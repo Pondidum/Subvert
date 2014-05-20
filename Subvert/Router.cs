@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Subvert
+﻿namespace Subvert
 {
 	public class Router
 	{
