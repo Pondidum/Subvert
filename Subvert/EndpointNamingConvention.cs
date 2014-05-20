@@ -9,7 +9,7 @@ namespace Subvert
 			var name = type.Name;
 			var index = name.LastIndexOf("Endpoint", StringComparison.OrdinalIgnoreCase);
 
-			return name.Substring(index);
+			return name.Substring(0, index);
 		}
 
 		public Boolean IsMatch(Type type)
