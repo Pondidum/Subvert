@@ -11,7 +11,7 @@ namespace Subvert
 			_endpoints = endpoints;
 		}
 
-		public EndpointAction GetAction(Route route)
+		public EndpointAction GetAction(RouteData route)
 		{
 			var endpoint = _endpoints.GetEndpointByName(route.Endpoint);
 
