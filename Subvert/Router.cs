@@ -5,19 +5,29 @@ namespace Subvert
 	public class Router
 	{
 		private readonly EndpointDiscovery _endpoints;
-		private readonly RouteConvention _convention;
 
-		public Router(EndpointDiscovery endpoints, RouteConvention convention)
+		public Router(EndpointDiscovery endpoints)
 		{
 			_endpoints = endpoints;
-			_convention = convention;
 		}
 
-		public Type GetEndpointForRoute(Uri route)
+		public EndpointAction GetAction(Route route)
 		{
-			var endpointName = _convention.GetEndpointName(route);
+			var endpoint = _endpoints.GetEndpointByName(route.Endpoint);
 
-			return _endpoints.GetEndpointByName(endpointName);
+			if (endpoint == null)
+			{
+				return null; //return 404 action?
+			}
+
+			var action = endpoint.GetAction(route.Method, route.Action);
+
+			if (action == null)
+			{
+				return null; //return 404 action?
+			}
+
+			return action;
 		}
 	}
 }
