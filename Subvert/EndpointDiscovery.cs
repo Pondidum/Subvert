@@ -8,28 +8,28 @@ namespace Subvert
 {
 	public class EndpointDiscovery
 	{
-		private readonly Lazy<List<Type>> _types;
+		private readonly EndpointNamingConvention _namingConvention;
+		private readonly Lazy<List<Endpoint>> _types;
 
-		public EndpointDiscovery(HostAssembly hostAssembly)
+		public EndpointDiscovery(HostAssembly hostAssembly, EndpointNamingConvention namingConvention)
 		{
-			_types = new Lazy<List<Type>>(() =>
-			{
-				return hostAssembly
-					.Assembly
-					.GetTypes()
-					.Where(t => t.Name.EndsWith("Endpoint", StringComparison.OrdinalIgnoreCase))
-					.ToList();
-			});
+			_namingConvention = namingConvention;
+			_types = new Lazy<List<Endpoint>>(() => hostAssembly
+				.Assembly
+				.GetTypes()
+				.Where(t => _namingConvention.IsMatch(t))
+				.Select(t => new Endpoint(t, _namingConvention.GetName(t)))
+				.ToList());
 		}
 
-		public IEnumerable<Type> GetEndpoints()
+		public IEnumerable<Endpoint> GetEndpoints()
 		{
 			return _types.Value;
 		}
 
-		public Type GetEndpointByName(string name)
+		public Endpoint GetEndpointByName(string name)
 		{
-			return _types.Value.FirstOrDefault(e => e.Name.Equals(name + "Endpoint", StringComparison.OrdinalIgnoreCase));
+			return _types.Value.FirstOrDefault(e => e.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
 		}
 	}
 }
