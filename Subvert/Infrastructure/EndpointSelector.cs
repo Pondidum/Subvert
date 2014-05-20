@@ -5,7 +5,7 @@ using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Dispatcher;
 
-namespace Subvert
+namespace Subvert.Infrastructure
 {
 	internal class EndpointSelector<TController> : IHttpControllerSelector where TController : ApiController
 	{

@@ -59,11 +59,11 @@
   <ItemGroup>
     <Compile Include="Endpoint.cs" />
     <Compile Include="EndpointAction.cs" />
-    <Compile Include="EndpointActionSelector.cs" />
+    <Compile Include="Infrastructure\EndpointActionSelector.cs" />
     <Compile Include="EndpointDiscovery.cs" />
     <Compile Include="EndpointNamingConvention.cs" />
     <Compile Include="FrontController.cs" />
-    <Compile Include="EndpointSelector.cs" />
+    <Compile Include="Infrastructure\EndpointSelector.cs" />
     <Compile Include="HostAssembly.cs" />
     <Compile Include="IJsonSerializer.cs" />
     <Compile Include="Infrastructure\StructureMapDependencyResolver.cs" />
