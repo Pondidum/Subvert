@@ -2,8 +2,8 @@
 {
 	public class RouteData
 	{
-		public string Method { get; private set; }
-		public string Endpoint { get; private set; }
-		public string Action { get; private set; }
+		public string Method { get; set; }
+		public string Endpoint { get; set; }
+		public string Action { get; set; }
 	}
 }
