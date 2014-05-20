@@ -57,6 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Endpoint.cs" />
+    <Compile Include="EndpointAction.cs" />
     <Compile Include="EndpointActionSelector.cs" />
     <Compile Include="EndpointDiscovery.cs" />
     <Compile Include="FrontController.cs" />
