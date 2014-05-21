@@ -4,12 +4,12 @@ using System.Linq;
 
 namespace Subvert
 {
-	public class EndpointDiscovery
+	public class EndpointAssemblyScanner : IEndpointStore
 	{
 		private readonly EndpointNamingConvention _namingConvention;
 		private readonly Lazy<List<Endpoint>> _types;
 
-		public EndpointDiscovery(HostAssembly hostAssembly, EndpointNamingConvention namingConvention)
+		public EndpointAssemblyScanner(HostAssembly hostAssembly, EndpointNamingConvention namingConvention)
 		{
 			_namingConvention = namingConvention;
 			_types = new Lazy<List<Endpoint>>(() => hostAssembly

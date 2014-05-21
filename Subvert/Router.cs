@@ -2,9 +2,9 @@
 {
 	public class Router
 	{
-		private readonly EndpointDiscovery _endpoints;
+		private readonly IEndpointStore _endpoints;
 
-		public Router(EndpointDiscovery endpoints)
+		public Router(IEndpointStore endpoints)
 		{
 			_endpoints = endpoints;
 		}

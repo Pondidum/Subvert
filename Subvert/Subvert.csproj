@@ -59,8 +59,9 @@
   <ItemGroup>
     <Compile Include="Endpoint.cs" />
     <Compile Include="EndpointAction.cs" />
+    <Compile Include="EndpointAssemblyScanner.cs" />
     <Compile Include="Infrastructure\EndpointActionSelector.cs" />
-    <Compile Include="EndpointDiscovery.cs" />
+    <Compile Include="IEndpointStore.cs" />
     <Compile Include="EndpointNamingConvention.cs" />
     <Compile Include="FrontController.cs" />
     <Compile Include="Infrastructure\EndpointSelector.cs" />

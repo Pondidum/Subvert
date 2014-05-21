@@ -16,7 +16,8 @@ namespace Subvert
 				s.AddAllTypesOf<IViewRenderer>();
 			});
 
-			For<EndpointDiscovery>()
+			For<IEndpointStore>()
+				.Use<EndpointAssemblyScanner>()
 				.Singleton();
 		}
 	}
