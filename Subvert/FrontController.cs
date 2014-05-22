@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using StructureMap;
@@ -10,28 +9,25 @@ namespace Subvert
 	internal class FrontController : ApiController
 	{
 		private readonly Router _router;
+		private readonly IRouteDataBuilder _routeDataBuilder;
 		private readonly ViewRendererFactory _rendererFactory;
 		private readonly IContainer _container;
 
-		public FrontController(Router router, ViewRendererFactory rendererFactory, IContainer container)
+		public FrontController(Router router, IRouteDataBuilder routeDataBuilder, ViewRendererFactory rendererFactory, IContainer container)
 		{
 			_router = router;
+			_routeDataBuilder = routeDataBuilder;
 			_rendererFactory = rendererFactory;
 			_container = container;
 		}
 
 		public HttpResponseMessage Handle()
 		{
-			var route = new RouteData();
-
-			var segments = Request.RequestUri.Segments.Where(s => s != "/").ToList();
-			route.Endpoint = segments.FirstOrDefault();
-			route.Action = segments.Skip(1).FirstOrDefault();
-			route.Method = Request.Method.Method;
+			var routeData = _routeDataBuilder.Build(Request);
 			
 			using (var container = _container.GetNestedContainer())
 			{
-				var action = _router.GetAction(route);
+				var action = _router.GetAction(routeData);
 
 				if (action == null)
 				{
