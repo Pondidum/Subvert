@@ -24,9 +24,15 @@ namespace Subvert.ModelBinding
 				{
 					var type = Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType;
 
-					var value = Convert.ChangeType(pair.Value, type);
-
-					property.SetValue(model, value);
+					try
+					{
+						var value = Convert.ChangeType(pair.Value, type);
+						property.SetValue(model, value);
+					}
+					catch (FormatException ex)
+					{
+						//log it!
+					}
 				}
 			}
 		}
