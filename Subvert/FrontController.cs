@@ -1,7 +1,12 @@
-﻿using System.Net;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using StructureMap;
+using Subvert.ModelBinding;
 using Subvert.ViewRendering;
 
 namespace Subvert
@@ -11,13 +16,15 @@ namespace Subvert
 		private readonly Router _router;
 		private readonly IRequestResolver _requestResolver;
 		private readonly IRouteDataBuilder _routeDataBuilder;
+		private readonly ModelBinder _modelBinder;
 		private readonly ViewRendererFactory _rendererFactory;
 
-		public FrontController(Router router,IRequestResolver requestResolver,  IRouteDataBuilder routeDataBuilder, ViewRendererFactory rendererFactory, IContainer container)
+		public FrontController(Router router, IRequestResolver requestResolver, IRouteDataBuilder routeDataBuilder, ModelBinder modelBinder, ViewRendererFactory rendererFactory, IContainer container)
 		{
 			_router = router;
 			_requestResolver = requestResolver;
 			_routeDataBuilder = routeDataBuilder;
+			_modelBinder = modelBinder;
 			_rendererFactory = rendererFactory;
 		}
 
@@ -35,15 +42,14 @@ namespace Subvert
 			var instance = _requestResolver.GetInstance(action.EndpointType);
 			var inputModel = _requestResolver.GetInstance(action.InputModelType);
 
-
-			//populate inputModel
+			_modelBinder.Bind(Request, inputModel);
 
 			var viewModel = action.Run(instance, inputModel);
-
 			var renderer = _rendererFactory.ForContentType(Request.Headers.Accept);
 
 			return renderer.Render(viewModel);
 
 		}
 	}
+
 }

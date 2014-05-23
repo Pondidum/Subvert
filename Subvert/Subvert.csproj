@@ -70,9 +70,13 @@
     <Compile Include="Infrastructure\StructureMapDependencyResolver.cs" />
     <Compile Include="Infrastructure\StructureMapDependencyScope.cs" />
     <Compile Include="InternalRegistry.cs" />
+    <Compile Include="IRequestResolver.cs" />
+    <Compile Include="IRouteDataBuilder.cs" />
     <Compile Include="JsonSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestResolver.cs" />
     <Compile Include="RouteData.cs" />
+    <Compile Include="RouteDataBuilder.cs" />
     <Compile Include="Router.cs" />
     <Compile Include="SubvertThis.cs" />
     <Compile Include="ViewRendering\IViewRenderer.cs" />
