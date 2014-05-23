@@ -74,6 +74,7 @@
     <Compile Include="IRouteDataBuilder.cs" />
     <Compile Include="JsonSerializer.cs" />
     <Compile Include="ModelBinding\DictionaryBinder.cs" />
+    <Compile Include="ModelBinding\FormDataBinder.cs" />
     <Compile Include="ModelBinding\IModelBinder.cs" />
     <Compile Include="ModelBinding\ModelBinder.cs" />
     <Compile Include="ModelBinding\QueryBinder.cs" />
