@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using System.Net.Http;
 
@@ -6,6 +5,13 @@ namespace Subvert.ModelBinding
 {
 	public class QueryBinder : IModelBinder
 	{
+		private readonly DictionaryBinder _binder;
+
+		public QueryBinder(DictionaryBinder binder)
+		{
+			_binder = binder;
+		}
+
 		public bool CanHandle(HttpRequestMessage message)
 		{
 			return message.GetQueryNameValuePairs().Any();
@@ -13,28 +19,7 @@ namespace Subvert.ModelBinding
 
 		public void Bind(HttpRequestMessage message, object model)
 		{
-			var pairs = message.GetQueryNameValuePairs();
-			var properties = model.GetType().GetProperties();
-
-			foreach (var pair in pairs)
-			{
-				var property = properties.FirstOrDefault(p => p.Name.Equals(pair.Key, StringComparison.OrdinalIgnoreCase));
-
-				if (property != null)
-				{
-					var type = Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType;
-
-					try
-					{
-						var value = Convert.ChangeType(pair.Value, type);
-						property.SetValue(model, value);
-					}
-					catch (FormatException ex)
-					{
-						//log it!
-					}
-				}
-			}
+			_binder.Bind(message.GetQueryNameValuePairs(), model);
 		}
 	}
 }
