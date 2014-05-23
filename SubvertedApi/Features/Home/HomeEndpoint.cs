@@ -6,6 +6,7 @@
 		{
 			return new HomeViewModel
 			{
+				ID = model.ID,
 				Name = "Andy", 
 				Age = 27
 			};
