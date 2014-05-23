@@ -1,5 +1,6 @@
 ﻿using StructureMap.Configuration.DSL;
 using StructureMap.Graph;
+using Subvert.ModelBinding;
 using Subvert.ViewRendering;
 
 namespace Subvert
@@ -14,6 +15,7 @@ namespace Subvert
 				s.WithDefaultConventions();
 
 				s.AddAllTypesOf<IViewRenderer>();
+				s.AddAllTypesOf<IModelBinder>();
 			});
 
 			For<IEndpointStore>()
