@@ -73,6 +73,9 @@
     <Compile Include="IRequestResolver.cs" />
     <Compile Include="IRouteDataBuilder.cs" />
     <Compile Include="JsonSerializer.cs" />
+    <Compile Include="ModelBinding\IModelBinder.cs" />
+    <Compile Include="ModelBinding\ModelBinder.cs" />
+    <Compile Include="ModelBinding\QueryBinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestResolver.cs" />
     <Compile Include="RouteData.cs" />
