@@ -9,5 +9,7 @@ namespace Subvert
 		string HttpMethod { get; }
 
 		Uri RawUrl { get; }
+
+		IEnumerable<string> GetHeader(string key);
 	}
 }
