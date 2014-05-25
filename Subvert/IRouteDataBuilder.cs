@@ -1,6 +1,4 @@
-﻿using System.Net.Http;
-
-namespace Subvert
+﻿namespace Subvert
 {
 	public interface IRouteDataBuilder
 	{

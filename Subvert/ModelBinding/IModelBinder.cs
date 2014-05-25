@@ -1,7 +1,4 @@
-﻿using System;
-using System.Net.Http;
-
-namespace Subvert.ModelBinding
+﻿namespace Subvert.ModelBinding
 {
 	public interface IModelBinder
 	{
