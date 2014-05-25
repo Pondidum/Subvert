@@ -4,6 +4,6 @@ namespace Subvert
 {
 	public interface IRouteDataBuilder
 	{
-		RouteData Build(HttpRequestMessage request);
+		RouteData Build(IRequest request);
 	}
 }

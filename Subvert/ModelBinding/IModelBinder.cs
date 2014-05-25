@@ -5,7 +5,7 @@ namespace Subvert.ModelBinding
 {
 	public interface IModelBinder
 	{
-		bool CanHandle(HttpRequestMessage message);
-		void Bind(HttpRequestMessage message, Object model);
+		bool CanHandle(IRequest message);
+		void Bind(IRequest message, object model);
 	}
 }

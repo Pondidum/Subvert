@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 
 namespace Subvert.ModelBinding
 {
@@ -13,15 +13,17 @@ namespace Subvert.ModelBinding
 			_binder = binder;
 		}
 
-		public bool CanHandle(HttpRequestMessage message)
+		public bool CanHandle(IRequest message)
 		{
-			return message.Content.IsFormData();
+			return message
+				.GetHeader("Content-Type")
+				.Any(header => header.Equals("application/x-www-form-urlencoded", StringComparison.OrdinalIgnoreCase));
 		}
 
-		public async void Bind(HttpRequestMessage message, object model)
+		public async void Bind(IRequest message, object model)
 		{
-			var content = await message.Content.ReadAsFormDataAsync();
 
+			var content = message.Form;
 			var collection = content
 				.Cast<string>()
 				.Select(key => new KeyValuePair<string, string>(key, content[key]));

@@ -12,14 +12,14 @@ namespace Subvert.ModelBinding
 			_binder = binder;
 		}
 
-		public bool CanHandle(HttpRequestMessage message)
+		public bool CanHandle(IRequest message)
 		{
-			return message.GetQueryNameValuePairs().Any();
+			return message.Query.Any();
 		}
 
-		public void Bind(HttpRequestMessage message, object model)
+		public void Bind(IRequest message, object model)
 		{
-			_binder.Bind(message.GetQueryNameValuePairs(), model);
+			_binder.Bind(message.Query, model);
 		}
 	}
 }

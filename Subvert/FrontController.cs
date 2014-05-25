@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
+﻿using System.Collections.Specialized;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -30,7 +27,8 @@ namespace Subvert
 
 		public HttpResponseMessage Handle()
 		{
-			var routeData = _routeDataBuilder.Build(Request);
+			var request = new Request(Request);
+			var routeData = _routeDataBuilder.Build(request);
 
 			var action = _router.GetAction(routeData);
 
@@ -42,7 +40,7 @@ namespace Subvert
 			var instance = _requestResolver.GetInstance(action.EndpointType);
 			var inputModel = _requestResolver.GetInstance(action.InputModelType);
 
-			_modelBinder.Bind(Request, inputModel);
+			_modelBinder.Bind(request, inputModel);
 
 			var viewModel = action.Run(instance, inputModel);
 			var renderer = _rendererFactory.ForContentType(Request.Headers.Accept);
@@ -51,5 +49,4 @@ namespace Subvert
 
 		}
 	}
-
 }

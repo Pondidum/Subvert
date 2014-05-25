@@ -5,15 +5,15 @@ namespace Subvert
 {
 	public class RouteDataBuilder : IRouteDataBuilder
 	{
-		public RouteData Build(HttpRequestMessage request)
+		public RouteData Build(IRequest request)
 		{
-			var segments = request.RequestUri.Segments.Where(s => s != "/").ToList();
+			var segments = request.RawUrl.Segments.Where(s => s != "/").ToList();
 
 			var route = new RouteData
 			{
 				Endpoint = segments.FirstOrDefault(),
 				Action = segments.Skip(1).FirstOrDefault(),
-				Method = request.Method.Method
+				Method = request.HttpMethod
 			};
 
 			return route;
