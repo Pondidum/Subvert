@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 
 namespace Subvert
 {
@@ -12,5 +13,7 @@ namespace Subvert
 
 		IEnumerable<string> GetHeader(string key);
 		bool HasHeader(string key);
+
+		NameValueCollection Form { get; }
 	}
 }
