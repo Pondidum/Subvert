@@ -11,5 +11,6 @@ namespace Subvert
 		Uri RawUrl { get; }
 
 		IEnumerable<string> GetHeader(string key);
+		bool HasHeader(string key);
 	}
 }

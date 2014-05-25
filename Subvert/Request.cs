@@ -25,5 +25,10 @@ namespace Subvert
 		{
 			return _request.Headers.GetValues(key) ?? Enumerable.Empty<string>();
 		}
+
+		public bool HasHeader(string key)
+		{
+			return _request.Headers.Contains(key);
+		}
 	}
 }
