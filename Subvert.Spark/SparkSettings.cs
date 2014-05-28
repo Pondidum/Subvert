@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
-using Spark;
-
-namespace Subvert.Spark
+﻿namespace Subvert.Spark
 {
 	public class SparkSettings
 	{
-		public IEnumerable<string> Templates { get; set; }
+		public static ISparkSettings Default { get; private set; }
+
+		static SparkSettings()
+		{
+			Default = new SparkDefaultSettings();
+		}
 	}
 }

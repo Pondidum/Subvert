@@ -4,9 +4,9 @@ namespace Subvert.Spark
 {
 	internal class DescriptorBuilder
 	{
-		private readonly SparkSettings _settings;
+		private readonly ISparkSettings _settings;
 
-		public DescriptorBuilder(SparkSettings settings)
+		public DescriptorBuilder(ISparkSettings settings)
 		{
 			_settings = settings;
 		}
