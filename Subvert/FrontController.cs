@@ -42,7 +42,7 @@ namespace Subvert
 			_modelBinder.Bind(request, inputModel);
 
 			var viewModel = action.Run(instance, inputModel);
-			var renderer = _rendererFactory.ForContentType(Request.Headers.Accept);
+			var renderer = _rendererFactory.ForContentType(request);
 
 			return renderer.Render(viewModel);
 

@@ -18,9 +18,11 @@ namespace Subvert.ViewRendering
 			_contentTypes = new[] { "text/json" };
 		}
 
-		public bool CanHandle(string contentType)
+		public bool CanHandle(IRequest request)
 		{
-			return _contentTypes.Contains(contentType, StringComparer.OrdinalIgnoreCase);
+			var accept = request.GetHeader("accept").ToList();
+
+			return _contentTypes.Any(type => accept.Contains(type, StringComparer.OrdinalIgnoreCase));
 		}
 
 		public HttpResponseMessage Render(object viewModel)

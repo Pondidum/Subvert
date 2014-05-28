@@ -5,7 +5,7 @@ namespace Subvert.ViewRendering
 {
 	public interface IViewRenderer
 	{
-		bool CanHandle(string contentType);
+		bool CanHandle(IRequest request);
 
 		HttpResponseMessage Render(Object viewModel);
 	}

@@ -15,9 +15,9 @@ namespace Subvert.ViewRendering
 			_defaultRenderer = _renderers.OfType<JsonViewRenderer>().Single();
 		}
 
-		public IViewRenderer ForContentType(IEnumerable<MediaTypeWithQualityHeaderValue> contentTypes)
+		public IViewRenderer ForContentType(IRequest request)
 		{
-			var renderer = _renderers.FirstOrDefault(r => contentTypes.Any(contentType => r.CanHandle(contentType.MediaType)));
+			var renderer = _renderers.FirstOrDefault(r => r.CanHandle(request));
 
 			return renderer ?? _defaultRenderer;
 		}
