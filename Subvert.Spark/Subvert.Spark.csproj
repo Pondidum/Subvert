@@ -43,8 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ISettableModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SparkViewRenderer.cs" />
+    <Compile Include="SubvertSparkView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Subvert\Subvert.csproj">
