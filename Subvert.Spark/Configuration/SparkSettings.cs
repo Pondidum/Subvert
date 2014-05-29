@@ -1,4 +1,4 @@
-﻿namespace Subvert.Spark
+﻿namespace Subvert.Spark.Configuration
 {
 	public class SparkSettings
 	{
@@ -9,4 +9,5 @@
 			Default = new SparkDefaultSettings();
 		}
 	}
+
 }

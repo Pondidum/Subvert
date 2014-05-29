@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace Subvert.Spark
+namespace Subvert.Spark.Configuration
 {
 	internal class SparkDefaultSettings : ISparkSettings
 	{

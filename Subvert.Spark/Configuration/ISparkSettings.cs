@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Subvert.Spark
+namespace Subvert.Spark.Configuration
 {
 	public interface ISparkSettings
 	{

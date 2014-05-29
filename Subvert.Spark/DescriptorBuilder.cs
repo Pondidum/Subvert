@@ -1,4 +1,5 @@
 using Spark;
+using ISparkSettings = Subvert.Spark.Configuration.ISparkSettings;
 
 namespace Subvert.Spark
 {
