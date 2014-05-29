@@ -12,7 +12,10 @@ namespace Subvert.Spark
 		public SparkEngine(DescriptorBuilder builder)
 		{
 			_builder = builder;
-			_engine = new SparkViewEngine();
+			_engine = new SparkViewEngine(new SparkSettings()
+			{
+				PageBaseType = typeof(SubvertSparkView).FullName
+			});
 		}
 
 		internal ISettableModel CreateView<TModel>(TModel model) where TModel : class
