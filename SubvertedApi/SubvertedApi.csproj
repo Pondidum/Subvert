@@ -83,13 +83,16 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Content Include="Views\Home.spark" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Subvert\Subvert.csproj">
       <Project>{128fb5de-ff48-42f9-acd3-24b557316b0f}</Project>
       <Name>Subvert</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Application.spark" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

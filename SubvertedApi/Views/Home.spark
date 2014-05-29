@@ -1,0 +1,5 @@
+﻿<viewdata model="SubvertedApi.Features.Home.HomeViewModel" />
+
+<b>ID:</b>!{Model.ID}<br />
+<b>Name:</b>!{Model.Name}<br />
+<b>Age:</b>!{Model.Age}<br />
