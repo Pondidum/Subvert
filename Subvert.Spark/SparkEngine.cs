@@ -17,7 +17,7 @@ namespace Subvert.Spark
 
 		internal ISettableModel CreateView<TModel>(TModel model) where TModel : class
 		{
-			var view = GetView(typeof(TModel));
+			var view = GetView(model.GetType());
 			view.SetModel(model);
 
 			return view;
