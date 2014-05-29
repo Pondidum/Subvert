@@ -2,7 +2,7 @@
 
 namespace Subvert.Spark.Configuration
 {
-	public interface ISparkSettings
+	public interface ISparkConfiguration
 	{
 		IEnumerable<string> Templates { get; }
 	}

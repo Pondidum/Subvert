@@ -54,10 +54,10 @@
     <Compile Include="DescriptorBuilder.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="ISettableModel.cs" />
-    <Compile Include="Configuration\ISparkSettings.cs" />
+    <Compile Include="Configuration\ISparkConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Configuration\SparkDefaultSettings.cs" />
-    <Compile Include="Configuration\SparkSettings.cs" />
+    <Compile Include="Configuration\SparkDefaultConfiguration.cs" />
+    <Compile Include="Configuration\SparkConfiguration.cs" />
     <Compile Include="SparkEngine.cs" />
     <Compile Include="SparkViewRenderer.cs" />
     <Compile Include="SubvertSparkView.cs" />

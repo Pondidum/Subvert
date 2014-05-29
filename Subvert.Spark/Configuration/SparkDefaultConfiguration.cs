@@ -3,11 +3,11 @@ using System.IO;
 
 namespace Subvert.Spark.Configuration
 {
-	internal class SparkDefaultSettings : ISparkSettings
+	internal class SparkDefaultConfiguration : ISparkConfiguration
 	{
 		public IEnumerable<string> Templates { get; private set; }
 
-		public SparkDefaultSettings()
+		public SparkDefaultConfiguration()
 		{
 			Templates = new List<string>
 			{
