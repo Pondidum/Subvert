@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using StructureMap;
+using System.Linq;
 using Subvert.ViewRendering;
 
 namespace Subvert.Configuration
@@ -18,35 +18,32 @@ namespace Subvert.Configuration
 
 		public void Append<TRenderer>() where TRenderer : IViewRenderer
 		{
-			_renderers.Add(_create(typeof(TRenderer)));
+			Add<TRenderer>(_renderers.Count);
 		}
 
 		public void Prepend<TRenderer>() where TRenderer : IViewRenderer
 		{
-			_renderers.Insert(0, _create(typeof(TRenderer)));
+			Add<TRenderer>(0);
 		}
 
 		public RendererExpression Before<TRenderer>() where TRenderer : IViewRenderer
 		{
-			return new RendererExpression(_create, _renderers, typeof(TRenderer), 0);
+			return new RendererExpression(this, _renderers, typeof(TRenderer), 0);
 		}
 
 		public RendererExpression After<TRenderer>() where TRenderer : IViewRenderer
 		{
-			return new RendererExpression(_create, _renderers, typeof(TRenderer), 1);
+			return new RendererExpression(this, _renderers, typeof(TRenderer), 1);
 		}
 
+		internal void Add<TRenderer>(int index)
+		{
+			var type = typeof(TRenderer);
+
+			if (_renderers.Any(r => r.GetType() == type))
+				throw new RendererAlreadyRegisteredException(type);
+
+			_renderers.Insert(index, _create(type));
+		}
 	}
-	//public class TestConfiguration : Configuration
-	//{
-	//	public TestConfiguration()
-	//	{
-	//		Renderers.Append<IViewRenderer>();
-	//		Renderers.Prepend<IViewRenderer>();
-
-	//		Renderers.Before<IViewRenderer>().Add<IViewRenderer>();
-	//		Renderers.After<IViewRenderer>().Add<IViewRenderer>();
-	//	}
-	//}
-
 }
