@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using StructureMap;
 using Subvert.ViewRendering;
 
@@ -14,6 +15,8 @@ namespace Subvert.Configuration
 
 		public RendererExpression(Func<Type, IViewRenderer> createInstance, List<IViewRenderer> renderers, Type target, int offset)
 		{
+			if (renderers.Any(r => r.GetType() == target) == false) throw new RendererNotFoundException(target);
+
 			_create = createInstance;
 			_renderers = renderers;
 			_target = target;

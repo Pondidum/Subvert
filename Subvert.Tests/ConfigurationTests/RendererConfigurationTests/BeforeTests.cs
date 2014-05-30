@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Should;
+using Subvert.Configuration;
 using Xunit;
 
 namespace Subvert.Tests.ConfigurationTests.RendererConfigurationTests
@@ -27,7 +28,7 @@ namespace Subvert.Tests.ConfigurationTests.RendererConfigurationTests
 		[Fact]
 		public void Throws_if_the_target_doesnt_exist()
 		{
-			Assert.Throws<Exception>(() => Config.Before<ExtraRenderer>().Add<NewRenderer>());
+			Assert.Throws<RendererNotFoundException>(() => Config.Before<ExtraRenderer>().Add<NewRenderer>());
 		}
 
 		[Fact]
