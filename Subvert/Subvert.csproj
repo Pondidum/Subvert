@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\ConfigurationAccessor.cs" />
+    <Compile Include="Configuration\RendererAlreadyRegisteredException.cs" />
     <Compile Include="Configuration\RendererConfiguration.cs" />
     <Compile Include="Configuration\RendererExpression.cs" />
     <Compile Include="Configuration\RendererNotFoundException.cs" />

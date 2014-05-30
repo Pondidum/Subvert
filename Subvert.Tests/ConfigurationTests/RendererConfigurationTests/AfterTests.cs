@@ -34,7 +34,7 @@ namespace Subvert.Tests.ConfigurationTests.RendererConfigurationTests
 		public void Throws_if_the_type_is_already_in_the_chain()
 		{
 			AddRenderer(new NewRenderer());
-			Assert.Throws<Exception>(() => Config.After<LastRenderer>().Add<NewRenderer>());
+			Assert.Throws<RendererAlreadyRegisteredException>(() => Config.After<LastRenderer>().Add<NewRenderer>());
 		}
 	}
 }

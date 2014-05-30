@@ -15,7 +15,8 @@ namespace Subvert.Configuration
 
 		public RendererExpression(Func<Type, IViewRenderer> createInstance, List<IViewRenderer> renderers, Type target, int offset)
 		{
-			if (renderers.Any(r => r.GetType() == target) == false) throw new RendererNotFoundException(target);
+			if (renderers.Any(r => r.GetType() == target) == false) 
+				throw new RendererNotFoundException(target);
 
 			_create = createInstance;
 			_renderers = renderers;
@@ -25,9 +26,14 @@ namespace Subvert.Configuration
 
 		public void Add<TRenderer>() where TRenderer : IViewRenderer
 		{
+			var type = typeof (TRenderer);
+
+			if (_renderers.Any(r => r.GetType() == type))
+				throw new RendererAlreadyRegisteredException(type);
+
 			var index = _renderers.FindIndex(x => x.GetType() == _target);
 
-			_renderers.Insert(index + _offset, _create(typeof(TRenderer)));
+			_renderers.Insert(index + _offset, _create(type));
 		}
 	}
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Should;
+using Subvert.Configuration;
 using Xunit;
 
 namespace Subvert.Tests.ConfigurationTests.RendererConfigurationTests
@@ -30,7 +31,7 @@ namespace Subvert.Tests.ConfigurationTests.RendererConfigurationTests
 		{
 			AddRenderer(new NewRenderer());
 
-			Assert.Throws<Exception>(() => Config.Prepend<NewRenderer>());
+			Assert.Throws<RendererAlreadyRegisteredException>(() => Config.Prepend<NewRenderer>());
 		}
 	}
 }
