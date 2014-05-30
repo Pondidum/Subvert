@@ -6,25 +6,21 @@ namespace Subvert.ViewRendering
 {
 	public class ViewRendererFactory
 	{
-		private readonly List<IViewRenderer> _renderers;
 		private readonly IViewRenderer _defaultRenderer;
+
+		protected internal List<IViewRenderer> Renderers { get; private set; }
 
 		public ViewRendererFactory(IEnumerable<IViewRenderer> renderers)
 		{
-			_renderers = renderers.ToList();
-			_defaultRenderer = _renderers.OfType<JsonViewRenderer>().Single();
+			Renderers = renderers.ToList();
+			_defaultRenderer = Renderers.OfType<JsonViewRenderer>().Single();
 		}
 
 		public IViewRenderer ForContentType(IRequest request)
 		{
-			var renderer = _renderers.FirstOrDefault(r => r.CanHandle(request));
+			var renderer = Renderers.FirstOrDefault(r => r.CanHandle(request));
 
 			return renderer ?? _defaultRenderer;
-		}
-
-		public void Add(IViewRenderer renderer)
-		{
-			_renderers.Add(renderer);
 		}
 	}
 }

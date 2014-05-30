@@ -57,6 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\ConfigurationAccessor.cs" />
+    <Compile Include="Configuration\RendererConfiguration.cs" />
+    <Compile Include="Configuration\RendererExpression.cs" />
     <Compile Include="Endpoint.cs" />
     <Compile Include="EndpointAction.cs" />
     <Compile Include="EndpointAssemblyScanner.cs" />
