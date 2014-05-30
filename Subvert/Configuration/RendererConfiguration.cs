@@ -28,7 +28,7 @@ namespace Subvert.Configuration
 
 		public RendererExpression Before<TRenderer>() where TRenderer : IViewRenderer
 		{
-			return new RendererExpression(_create, _renderers, typeof(TRenderer), -1);
+			return new RendererExpression(_create, _renderers, typeof(TRenderer), 0);
 		}
 
 		public RendererExpression After<TRenderer>() where TRenderer : IViewRenderer
