@@ -23,7 +23,7 @@ namespace Subvert.Configuration
 			_offset = offset;
 		}
 
-		public void Add<TRenderer>() where TRenderer : IViewRenderer
+		public void Add<TRenderer>() where TRenderer : IViewRenderer, new()
 		{
 			var type = typeof (TRenderer);
 
@@ -32,7 +32,7 @@ namespace Subvert.Configuration
 
 			var index = _renderers.FindIndex(x => x.GetType() == _target);
 
-			_configuration.Add<TRenderer>(index + _offset);
+			_configuration.Add(index + _offset, new TRenderer());
 		}
 	}
 }

@@ -29,7 +29,7 @@ namespace Subvert.Tests.ConfigurationTests.RendererConfigurationTests
 		public RendererConfigurationTestBase()
 		{
 			Renderers = new List<IViewRenderer>();
-			Config = new RendererConfiguration(CreateInstance, Renderers);
+			Config = new RendererConfiguration(Renderers);
 
 			AddAllRenderers();
 		}
