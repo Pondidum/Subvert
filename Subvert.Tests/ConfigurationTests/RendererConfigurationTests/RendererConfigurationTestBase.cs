@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using NSubstitute;
 using StructureMap;
 using StructureMap.Graph;
 using Subvert.Configuration;
@@ -10,26 +11,17 @@ namespace Subvert.Tests.ConfigurationTests.RendererConfigurationTests
 {
 	public class RendererConfigurationTestBase
 	{
-		private static readonly Func<Type, IViewRenderer> CreateInstance;
-
-		static RendererConfigurationTestBase()
-		{
-			var container = new Container(c => c.Scan(a =>
-			{
-				a.TheCallingAssembly();
-				a.WithDefaultConventions();
-			}));
-
-			CreateInstance = t => (IViewRenderer)container.GetInstance(t);
-		}
-
 		protected readonly List<IViewRenderer> Renderers;
 		protected readonly RendererConfiguration Config;
 
 		public RendererConfigurationTestBase()
 		{
 			Renderers = new List<IViewRenderer>();
-			Config = new RendererConfiguration(Renderers);
+
+			var factory = Substitute.For<IViewRendererFactory>();
+			factory.Renderers.Returns(Renderers);
+
+			Config = new RendererConfiguration(factory);
 
 			AddAllRenderers();
 		}
