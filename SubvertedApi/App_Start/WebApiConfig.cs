@@ -1,5 +1,7 @@
 ﻿using System.Web.Http;
 using Subvert;
+using Subvert.Configuration;
+using Subvert.Spark;
 
 namespace SubvertedApi
 {
@@ -16,8 +18,18 @@ namespace SubvertedApi
 			// For more information, refer to: http://www.asp.net/web-api
 			config.EnableSystemDiagnosticsTracing();
 
-			SubvertThis.Configuration(typeof(WebApiConfig), config);
+			//SubvertThis.Configuration(typeof(WebApiConfig), config);
 
+			SubvertThis.Configure<Configuration>(config);
+
+		}
+	}
+
+	public class Configuration : SubvertConfiguration
+	{
+		public Configuration()
+		{
+			Renderers.Append<SparkViewRenderer>();
 		}
 	}
 }
