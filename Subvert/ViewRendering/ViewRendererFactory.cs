@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http.Headers;
 
 namespace Subvert.ViewRendering
 {
-	public class ViewRendererFactory
+	public class ViewRendererFactory : IViewRendererFactory
 	{
 		private readonly IViewRenderer _defaultRenderer;
 
-		protected internal List<IViewRenderer> Renderers { get; private set; }
+		public List<IViewRenderer> Renderers { get; private set; }
 
 		public ViewRendererFactory(IEnumerable<IViewRenderer> renderers)
 		{

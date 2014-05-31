@@ -11,6 +11,11 @@ namespace Subvert.Spark
 	{
 		private readonly SparkEngine _engine;
 
+		public SparkViewRenderer()
+			: this(SparkConfiguration.Default)
+		{
+		}
+
 		public SparkViewRenderer(ISparkConfiguration settings)
 		{
 			_engine = new SparkEngine(new DescriptorBuilder(settings));

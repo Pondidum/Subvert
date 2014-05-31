@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Subvert.ViewRendering;
@@ -9,9 +8,9 @@ namespace Subvert.Configuration
 	{
 		private readonly List<IViewRenderer> _renderers;
 
-		public RendererConfiguration(List<IViewRenderer> renderers)
+		public RendererConfiguration(IViewRendererFactory factory)
 		{
-			_renderers = renderers;
+			_renderers = factory.Renderers;
 		}
 
 		public void Append<TRenderer>() where TRenderer : IViewRenderer, new()

@@ -13,9 +13,9 @@ namespace Subvert
 		private readonly IRequestResolver _requestResolver;
 		private readonly IRouteDataBuilder _routeDataBuilder;
 		private readonly ModelBinder _modelBinder;
-		private readonly ViewRendererFactory _rendererFactory;
+		private readonly IViewRendererFactory _rendererFactory;
 
-		public FrontController(Router router, IRequestResolver requestResolver, IRouteDataBuilder routeDataBuilder, ModelBinder modelBinder, ViewRendererFactory rendererFactory, IContainer container)
+		public FrontController(Router router, IRequestResolver requestResolver, IRouteDataBuilder routeDataBuilder, ModelBinder modelBinder, IViewRendererFactory rendererFactory, IContainer container)
 		{
 			_router = router;
 			_requestResolver = requestResolver;
