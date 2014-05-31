@@ -57,7 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\ConfigurationAccessor.cs" />
+    <Compile Include="Configuration\SubvertConfiguration.cs" />
     <Compile Include="Configuration\RendererAlreadyRegisteredException.cs" />
     <Compile Include="Configuration\RendererConfiguration.cs" />
     <Compile Include="Configuration\RendererExpression.cs" />
