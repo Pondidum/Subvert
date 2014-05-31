@@ -86,6 +86,10 @@
     <Content Include="Views\Home.spark" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Subvert.Spark\Subvert.Spark.csproj">
+      <Project>{326f60ff-4369-461c-9c85-3583c6a7894e}</Project>
+      <Name>Subvert.Spark</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Subvert\Subvert.csproj">
       <Project>{128fb5de-ff48-42f9-acd3-24b557316b0f}</Project>
       <Name>Subvert</Name>
