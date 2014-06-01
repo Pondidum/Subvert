@@ -27,7 +27,7 @@ namespace SubvertedApi
 
 	public class Configuration : SubvertConfiguration
 	{
-		public Configuration()
+		public override void Configure()
 		{
 			Renderers.Append<SparkViewRenderer>();
 		}

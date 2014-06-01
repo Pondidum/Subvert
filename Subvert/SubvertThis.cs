@@ -18,7 +18,7 @@ namespace Subvert
 			Configure(config, () => new T());
 		}
 
-		public static void Configure(HttpConfiguration config, Func<SubvertConfiguration> configuration)
+		public static void Configure<T>(HttpConfiguration config, Func<T> configuration) where T : SubvertConfiguration
 		{
 
 			var container = new Container(c => c.Scan(a =>
@@ -26,13 +26,17 @@ namespace Subvert
 				a.TheCallingAssembly();
 				a.LookForRegistries();
 				
-				c.For<HostAssembly>().Singleton();
+				c.For<HostAssembly>()
+					.OnCreationForAll(x => x.SetType(typeof(T)))
+					.Singleton();
+
 				c.For<IViewRendererFactory>().Singleton();
 			}));
 
-			GlobalConfiguration.Container = container;
+			var instance = configuration();
+			instance.Renderers = container.GetInstance<RendererConfiguration>();
 
-			configuration();
+			instance.Configure();
 
 			config.DependencyResolver = new StructureMapDependencyResolver(container);
 
