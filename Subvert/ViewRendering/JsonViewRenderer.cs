@@ -20,7 +20,7 @@ namespace Subvert.ViewRendering
 
 		public bool CanHandle(IRequest request)
 		{
-			var accept = request.GetHeader("accept").ToList();
+			var accept = request.GetHeader("content-type").ToList();
 
 			return _contentTypes.Any(type => accept.Contains(type, StringComparer.OrdinalIgnoreCase));
 		}
