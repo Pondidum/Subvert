@@ -25,7 +25,7 @@ namespace Subvert
 			{
 				a.TheCallingAssembly();
 				a.LookForRegistries();
-				
+
 				c.For<HostAssembly>()
 					.OnCreationForAll(x => x.SetType(typeof(T)))
 					.Singleton();
@@ -33,10 +33,9 @@ namespace Subvert
 				c.For<IViewRendererFactory>().Singleton();
 			}));
 
-			var instance = configuration();
-			instance.Renderers = container.GetInstance<RendererConfiguration>();
+			var builder = container.GetInstance<ConfigurationBuilder>();
+			builder.Execute(configuration);
 
-			instance.Configure();
 
 			config.DependencyResolver = new StructureMapDependencyResolver(container);
 
@@ -46,4 +45,6 @@ namespace Subvert
 			config.Routes.MapHttpRoute(name: "Subvert.Route", routeTemplate: "{*url}");
 		}
 	}
+
+	
 }
