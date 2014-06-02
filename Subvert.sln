@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subvert.Tests", "Subvert.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subvert.Spark", "Subvert.Spark\Subvert.Spark.csproj", "{326F60FF-4369-461C-9C85-3583C6A7894E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subvert.WebApi", "Subvert.WebApi\Subvert.WebApi.csproj", "{0F6D80AD-80A0-4B9E-A013-7CD8294E69ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{326F60FF-4369-461C-9C85-3583C6A7894E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{326F60FF-4369-461C-9C85-3583C6A7894E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{326F60FF-4369-461C-9C85-3583C6A7894E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F6D80AD-80A0-4B9E-A013-7CD8294E69ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F6D80AD-80A0-4B9E-A013-7CD8294E69ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F6D80AD-80A0-4B9E-A013-7CD8294E69ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F6D80AD-80A0-4B9E-A013-7CD8294E69ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
