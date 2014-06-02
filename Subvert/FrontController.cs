@@ -15,7 +15,7 @@ namespace Subvert
 		private readonly ModelBinder _modelBinder;
 		private readonly IViewRendererFactory _rendererFactory;
 
-		public FrontController(Router router, IRequestResolver requestResolver, IRouteDataBuilder routeDataBuilder, ModelBinder modelBinder, IViewRendererFactory rendererFactory, IContainer container)
+		public FrontController(Router router, IRequestResolver requestResolver, IRouteDataBuilder routeDataBuilder, ModelBinder modelBinder, IViewRendererFactory rendererFactory)
 		{
 			_router = router;
 			_requestResolver = requestResolver;
