@@ -26,24 +26,23 @@ namespace Subvert.Spark
 			return true;
 		}
 
-		public HttpResponseMessage Render(object viewModel)
+		public IResponse Render(object viewModel)
 		{
 			var view = _engine.CreateView(viewModel);
+			
+			var ms = new MemoryStream();
+			var writer = new StreamWriter(ms);
+			
+			view.RenderView(writer);
+			
+			writer.Flush();
+			ms.Position = 0;
 
-			var content = new PushStreamContent((responseStream, cont, context) =>
+			return new Response
 			{
-				using (var writer = new StreamWriter(responseStream))
-				{
-					view.RenderView(writer);
-				}
-				responseStream.Close();
-			});
-
-			content.Headers.ContentType = new MediaTypeHeaderValue("text/html");
-
-			return new HttpResponseMessage(HttpStatusCode.OK)
-			{
-				Content = content
+				StatusCode = HttpStatus.Ok, 
+				ContentStream = ms,
+				ContentType = "text/html"
 			};
 		}
 	}

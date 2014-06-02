@@ -1,5 +1,7 @@
-﻿using System.Net;
+﻿using System.IO;
+using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web.Http;
 using StructureMap;
 using Subvert.ModelBinding;
@@ -44,8 +46,28 @@ namespace Subvert
 			var viewModel = action.Run(instance, inputModel);
 			var renderer = _rendererFactory.ForContentType(request);
 
-			return renderer.Render(viewModel);
+			return BuildResponse(renderer.Render(viewModel));
 
+		}
+
+		private HttpResponseMessage BuildResponse(IResponse response)
+		{
+			var content = new PushStreamContent((responseStream, cont, context) =>
+			{
+				response.ContentStream.CopyTo(responseStream);
+				responseStream.Close();
+				response.ContentStream.Close();
+			});
+
+			content.Headers.ContentType = new MediaTypeHeaderValue(response.ContentType);
+
+			var message = new HttpResponseMessage
+			{
+				StatusCode = (HttpStatusCode)response.StatusCode,
+				Content = content,
+			};
+
+			return message;
 		}
 	}
 }

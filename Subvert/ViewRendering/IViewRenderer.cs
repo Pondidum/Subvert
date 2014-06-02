@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net.Http;
 
 namespace Subvert.ViewRendering
 {
@@ -7,6 +6,6 @@ namespace Subvert.ViewRendering
 	{
 		bool CanHandle(IRequest request);
 
-		HttpResponseMessage Render(Object viewModel);
+		IResponse Render(Object viewModel);
 	}
 }

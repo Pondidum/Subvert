@@ -48,7 +48,7 @@ namespace Subvert.Tests.ConfigurationTests.RendererConfigurationTests
 			return true;
 		}
 
-		public HttpResponseMessage Render(object viewModel)
+		public IResponse Render(object viewModel)
 		{
 			return null;
 		}

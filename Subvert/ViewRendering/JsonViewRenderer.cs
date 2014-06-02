@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -25,13 +26,29 @@ namespace Subvert.ViewRendering
 			return _contentTypes.Any(type => accept.Contains(type, StringComparer.OrdinalIgnoreCase));
 		}
 
-		public HttpResponseMessage Render(object viewModel)
+		public IResponse Render(object viewModel)
 		{
-			return new HttpResponseMessage
+			var ms = new MemoryStream();
+			var writer = new StreamWriter(ms);
+			writer.Write(_serializer.Serialize(viewModel));
+
+			writer.Flush();
+			ms.Position = 0;
+
+			var response = new Response
 			{
-				StatusCode = HttpStatusCode.OK,
-				Content = new StringContent(_serializer.Serialize(viewModel), Encoding.UTF8, "text/json"),
+				StatusCode = HttpStatus.Ok,
+				ContentStream = ms,
+				ContentType = "text/json"
 			};
+
+			return response;
+
+			//return new HttpResponseMessage
+			//{
+			//	StatusCode = HttpStatusCode.OK,
+			//	Content = new StringContent(_serializer.Serialize(viewModel), Encoding.UTF8, "text/json"),
+			//};
 		}
 	}
 }
