@@ -66,6 +66,7 @@
     <Compile Include="Endpoint.cs" />
     <Compile Include="EndpointAction.cs" />
     <Compile Include="EndpointAssemblyScanner.cs" />
+    <Compile Include="HttpStatus.cs" />
     <Compile Include="Infrastructure\EndpointActionSelector.cs" />
     <Compile Include="IEndpointStore.cs" />
     <Compile Include="EndpointNamingConvention.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="InternalRegistry.cs" />
     <Compile Include="IRequest.cs" />
     <Compile Include="IRequestResolver.cs" />
+    <Compile Include="IResponse.cs" />
     <Compile Include="IRouteDataBuilder.cs" />
     <Compile Include="JsonSerializer.cs" />
     <Compile Include="ModelBinding\DictionaryBinder.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request.cs" />
     <Compile Include="RequestResolver.cs" />
+    <Compile Include="Response.cs" />
     <Compile Include="RouteData.cs" />
     <Compile Include="RouteDataBuilder.cs" />
     <Compile Include="Router.cs" />
@@ -96,6 +99,7 @@
     <Compile Include="ViewRendering\IViewRendererFactory.cs" />
     <Compile Include="ViewRendering\JsonViewRenderer.cs" />
     <Compile Include="ViewRendering\ViewRendererFactory.cs" />
+    <Compile Include="WebApiController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

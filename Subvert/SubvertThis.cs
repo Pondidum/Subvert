@@ -40,7 +40,7 @@ namespace Subvert
 			config.DependencyResolver = new StructureMapDependencyResolver(container);
 
 			config.Services.Replace(typeof(IHttpActionSelector), new EndpointActionSelector());
-			config.Services.Replace(typeof(IHttpControllerSelector), new EndpointSelector<FrontController>(config));
+			config.Services.Replace(typeof(IHttpControllerSelector), new EndpointSelector<WebApiController>(config));
 
 			config.Routes.MapHttpRoute(name: "Subvert.Route", routeTemplate: "{*url}");
 		}

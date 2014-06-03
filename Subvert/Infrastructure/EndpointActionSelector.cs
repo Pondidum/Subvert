@@ -8,7 +8,7 @@ namespace Subvert.Infrastructure
 	{
 		public HttpActionDescriptor SelectAction(HttpControllerContext controllerContext)
 		{
-			var type = typeof(FrontController);
+			var type = typeof(WebApiController);
 			var method = type.GetMethod("Handle");
 
 			return new ReflectedHttpActionDescriptor(

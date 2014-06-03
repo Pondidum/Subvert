@@ -1,15 +1,9 @@
-﻿using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Web.Http;
-using StructureMap;
-using Subvert.ModelBinding;
+﻿using Subvert.ModelBinding;
 using Subvert.ViewRendering;
 
 namespace Subvert
 {
-	internal class FrontController : ApiController
+	internal class FrontController
 	{
 		private readonly Router _router;
 		private readonly IRequestResolver _requestResolver;
@@ -26,16 +20,15 @@ namespace Subvert
 			_rendererFactory = rendererFactory;
 		}
 
-		public HttpResponseMessage Handle()
+		public IResponse Handle(IRequest request)
 		{
-			var request = new Request(Request);
 			var routeData = _routeDataBuilder.Build(request);
 
 			var action = _router.GetAction(routeData);
 
 			if (action == null)
 			{
-				return new HttpResponseMessage(HttpStatusCode.NotFound);
+				return new Response() { StatusCode = HttpStatus.NotFound};
 			}
 
 			var instance = _requestResolver.GetInstance(action.EndpointType);
@@ -46,28 +39,9 @@ namespace Subvert
 			var viewModel = action.Run(instance, inputModel);
 			var renderer = _rendererFactory.ForContentType(request);
 
-			return BuildResponse(renderer.Render(viewModel));
+			return renderer.Render(viewModel);
 
 		}
 
-		private HttpResponseMessage BuildResponse(IResponse response)
-		{
-			var content = new PushStreamContent((responseStream, cont, context) =>
-			{
-				response.ContentStream.CopyTo(responseStream);
-				responseStream.Close();
-				response.ContentStream.Close();
-			});
-
-			content.Headers.ContentType = new MediaTypeHeaderValue(response.ContentType);
-
-			var message = new HttpResponseMessage
-			{
-				StatusCode = (HttpStatusCode)response.StatusCode,
-				Content = content,
-			};
-
-			return message;
-		}
 	}
 }
