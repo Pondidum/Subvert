@@ -3,7 +3,7 @@ using Subvert.ViewRendering;
 
 namespace Subvert
 {
-	internal class FrontController
+	public class FrontController
 	{
 		private readonly Router _router;
 		private readonly IRequestResolver _requestResolver;
@@ -11,7 +11,7 @@ namespace Subvert
 		private readonly ModelBinder _modelBinder;
 		private readonly IViewRendererFactory _rendererFactory;
 
-		public FrontController(Router router, IRequestResolver requestResolver, IRouteDataBuilder routeDataBuilder, ModelBinder modelBinder, IViewRendererFactory rendererFactory)
+		internal FrontController(Router router, IRequestResolver requestResolver, IRouteDataBuilder routeDataBuilder, ModelBinder modelBinder, IViewRendererFactory rendererFactory)
 		{
 			_router = router;
 			_requestResolver = requestResolver;
