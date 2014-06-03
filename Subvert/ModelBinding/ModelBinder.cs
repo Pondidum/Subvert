@@ -13,7 +13,7 @@ namespace Subvert.ModelBinding
 			_binders = binders;
 		}
 
-		public void Bind(Request message, Object model)
+		public void Bind(IRequest message, Object model)
 		{
 			var binders = _binders.Where(binder => binder.CanHandle(message));
 
