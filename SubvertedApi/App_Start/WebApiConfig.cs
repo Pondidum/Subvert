@@ -21,8 +21,7 @@ namespace SubvertedApi
 
 			SubvertThis
 				.Configure<Configuration>(config)
-				.HookTo(controller => new WebApiHook(controller, config));
-
+				.HookToWebApi(config);
 		}
 	}
 

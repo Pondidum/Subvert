@@ -55,6 +55,7 @@
     <Compile Include="EndpointSelector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceLocator.cs" />
+    <Compile Include="SubvertApplicationExtensions.cs" />
     <Compile Include="WebApiController.cs" />
     <Compile Include="WebApiHook.cs" />
   </ItemGroup>
