@@ -21,6 +21,13 @@ namespace Subvert
 			For<IEndpointStore>()
 				.Use<EndpointAssemblyScanner>()
 				.Singleton();
+
+			For<IViewRendererFactory>()
+				.Singleton();
+
+			For<IFrontController>()
+				.Use<FrontController>()
+				.Singleton();
 		}
 	}
 }
