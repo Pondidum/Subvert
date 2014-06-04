@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Web.Http.Controllers;
 
-namespace Subvert.Infrastructure
+namespace Subvert.WebApi
 {
 	internal class EndpointActionSelector : IHttpActionSelector
 	{

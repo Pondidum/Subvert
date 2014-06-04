@@ -68,11 +68,9 @@
     <Compile Include="EndpointAssemblyScanner.cs" />
     <Compile Include="HttpStatus.cs" />
     <Compile Include="IFrontController.cs" />
-    <Compile Include="Infrastructure\EndpointActionSelector.cs" />
     <Compile Include="IEndpointStore.cs" />
     <Compile Include="EndpointNamingConvention.cs" />
     <Compile Include="FrontController.cs" />
-    <Compile Include="Infrastructure\EndpointSelector.cs" />
     <Compile Include="HostAssembly.cs" />
     <Compile Include="IJsonSerializer.cs" />
     <Compile Include="Infrastructure\StructureMapDependencyResolver.cs" />
@@ -100,7 +98,6 @@
     <Compile Include="ViewRendering\IViewRendererFactory.cs" />
     <Compile Include="ViewRendering\JsonViewRenderer.cs" />
     <Compile Include="ViewRendering\ViewRendererFactory.cs" />
-    <Compile Include="WebApiController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
