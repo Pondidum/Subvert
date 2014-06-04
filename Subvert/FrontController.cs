@@ -3,7 +3,7 @@ using Subvert.ViewRendering;
 
 namespace Subvert
 {
-	public class FrontController
+	public class FrontController : IFrontController
 	{
 		private readonly Router _router;
 		private readonly IRequestResolver _requestResolver;

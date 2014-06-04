@@ -7,9 +7,9 @@ namespace Subvert
 {
 	internal class WebApiController : ApiController
 	{
-		private readonly FrontController _controller;
+		private readonly IFrontController _controller;
 
-		public WebApiController(FrontController controller)
+		public WebApiController(IFrontController controller)
 		{
 			_controller = controller;
 		}
