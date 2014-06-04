@@ -20,7 +20,7 @@ namespace SubvertedApi
 			config.EnableSystemDiagnosticsTracing();
 
 			SubvertThis
-				.Configure<Configuration>(config)
+				.Configure<Configuration>()
 				.HookToWebApi(config);
 		}
 	}
