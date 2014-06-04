@@ -9,9 +9,9 @@ namespace Subvert.WebApi
 	{
 		private readonly IFrontController _controller;
 
-		public WebApiController(IFrontController controller)
+		public WebApiController()
 		{
-			_controller = controller;
+			_controller = ServiceLocator.FrontController;
 		}
 
 		public HttpResponseMessage Handle()
@@ -23,23 +23,24 @@ namespace Subvert.WebApi
 
 		private HttpResponseMessage BuildResponse(IResponse response)
 		{
-			var content = new PushStreamContent((responseStream, cont, context) =>
-			{
-				response.ContentStream.CopyTo(responseStream);
-				responseStream.Close();
-				response.ContentStream.Close();
-			});
+			var message = new HttpResponseMessage();
 
-			if (string.IsNullOrWhiteSpace(response.ContentType) == false)
+			if (response.ContentStream != null)
 			{
+
+				var content = new PushStreamContent((responseStream, cont, context) =>
+				{
+					response.ContentStream.CopyTo(responseStream);
+					responseStream.Close();
+					response.ContentStream.Close();
+				});
+
 				content.Headers.ContentType = new MediaTypeHeaderValue(response.ContentType);
+
+				message.Content = content;
 			}
 
-			var message = new HttpResponseMessage
-			{
-				StatusCode = (HttpStatusCode)response.StatusCode,
-				Content = content,
-			};
+			message.StatusCode = (HttpStatusCode)response.StatusCode;
 
 			return message;
 		}
