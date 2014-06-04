@@ -90,6 +90,10 @@
       <Project>{326f60ff-4369-461c-9c85-3583c6a7894e}</Project>
       <Name>Subvert.Spark</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Subvert.WebApi\Subvert.WebApi.csproj">
+      <Project>{0F6D80AD-80A0-4B9E-A013-7CD8294E69ED}</Project>
+      <Name>Subvert.WebApi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Subvert\Subvert.csproj">
       <Project>{128fb5de-ff48-42f9-acd3-24b557316b0f}</Project>
       <Name>Subvert</Name>

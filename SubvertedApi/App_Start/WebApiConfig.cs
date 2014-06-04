@@ -2,6 +2,7 @@
 using Subvert;
 using Subvert.Configuration;
 using Subvert.Spark;
+using Subvert.WebApi;
 
 namespace SubvertedApi
 {
@@ -18,9 +19,9 @@ namespace SubvertedApi
 			// For more information, refer to: http://www.asp.net/web-api
 			config.EnableSystemDiagnosticsTracing();
 
-			//SubvertThis.Configuration(typeof(WebApiConfig), config);
-
-			SubvertThis.Configure<Configuration>(config);
+			SubvertThis
+				.Configure<Configuration>(config)
+				.HookTo(controller => new WebApiHook(controller, config));
 
 		}
 	}
