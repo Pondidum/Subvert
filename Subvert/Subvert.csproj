@@ -74,8 +74,6 @@
     <Compile Include="FrontController.cs" />
     <Compile Include="HostAssembly.cs" />
     <Compile Include="IJsonSerializer.cs" />
-    <Compile Include="Infrastructure\StructureMapDependencyResolver.cs" />
-    <Compile Include="Infrastructure\StructureMapDependencyScope.cs" />
     <Compile Include="InternalRegistry.cs" />
     <Compile Include="IRequest.cs" />
     <Compile Include="IRequestResolver.cs" />
