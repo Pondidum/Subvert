@@ -13,8 +13,7 @@ namespace Subvert
 		{
 			_namingConvention = namingConvention;
 			_types = new Lazy<List<Endpoint>>(() => hostAssembly
-				.Assembly
-				.GetTypes()
+				.AllTypes
 				.Where(t => _namingConvention.IsMatch(t))
 				.Select(t => new Endpoint(t, _namingConvention.GetName(t)))
 				.ToList());

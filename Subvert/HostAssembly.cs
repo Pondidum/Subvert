@@ -1,15 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace Subvert
 {
 	public class HostAssembly : IHostAssembly
 	{
-		public Assembly Assembly { get; set; }
+		private readonly Assembly _assembly;
 
 		public HostAssembly(Type typeInHost)
 		{
-			Assembly = typeInHost.Assembly;
+			_assembly = typeInHost.Assembly;
 		}
+
+		public IEnumerable<Type> AllTypes { get { return _assembly.GetTypes(); } }
 	}
 }

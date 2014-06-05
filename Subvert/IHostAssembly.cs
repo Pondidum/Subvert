@@ -1,9 +1,10 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Subvert
 {
 	public interface IHostAssembly
 	{
-		Assembly Assembly { get; set; }
+		IEnumerable<Type> AllTypes { get; }
 	}
 }
