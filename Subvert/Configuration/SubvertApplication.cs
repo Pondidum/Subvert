@@ -10,14 +10,17 @@ namespace Subvert.Configuration
 
 		public SubvertApplication(Func<T> configuration)
 		{
-			_container = new Container(c => c.Scan(a =>
+			_container = new Container(c =>
 			{
-				a.TheCallingAssembly();
-				a.LookForRegistries();
+				c.Scan(a =>
+				{
+					a.TheCallingAssembly();
+					a.LookForRegistries();
+				});
 
 				c.For<HostAssembly>()
 					.Use(() => new HostAssembly(typeof(T)));
-			}));
+			});
 
 			var builder = _container.GetInstance<ConfigurationBuilder>();
 			builder.Execute(configuration);
