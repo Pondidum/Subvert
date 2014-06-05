@@ -16,8 +16,7 @@ namespace Subvert.Configuration
 				a.LookForRegistries();
 
 				c.For<HostAssembly>()
-					.OnCreationForAll(x => x.SetType(typeof(T)))
-					.Singleton();
+					.Use(() => new HostAssembly(typeof(T)));
 			}));
 
 			var builder = _container.GetInstance<ConfigurationBuilder>();
