@@ -2,7 +2,7 @@ using System;
 
 namespace Subvert
 {
-	public class EndpointNamingConvention
+	public class EndpointNamingConvention : IEndpointNamingConvention
 	{
 		public string GetName(Type type)
 		{
