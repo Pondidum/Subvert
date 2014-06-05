@@ -60,6 +60,7 @@
     <Compile Include="EndpointNamingConvention.cs" />
     <Compile Include="FrontController.cs" />
     <Compile Include="HostAssembly.cs" />
+    <Compile Include="IHostAssembly.cs" />
     <Compile Include="IJsonSerializer.cs" />
     <Compile Include="InternalRegistry.cs" />
     <Compile Include="IRequest.cs" />

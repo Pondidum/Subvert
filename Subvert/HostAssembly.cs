@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace Subvert
 {
-	public class HostAssembly
+	public class HostAssembly : IHostAssembly
 	{
 		public Assembly Assembly { get; set; }
 

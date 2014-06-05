@@ -18,7 +18,7 @@ namespace Subvert.Configuration
 					a.LookForRegistries();
 				});
 
-				c.For<HostAssembly>()
+				c.For<IHostAssembly>()
 					.Use(() => new HostAssembly(typeof(T)));
 			});
 

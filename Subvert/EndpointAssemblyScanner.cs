@@ -9,7 +9,7 @@ namespace Subvert
 		private readonly EndpointNamingConvention _namingConvention;
 		private readonly Lazy<List<Endpoint>> _types;
 
-		public EndpointAssemblyScanner(HostAssembly hostAssembly, EndpointNamingConvention namingConvention)
+		public EndpointAssemblyScanner(IHostAssembly hostAssembly, EndpointNamingConvention namingConvention)
 		{
 			_namingConvention = namingConvention;
 			_types = new Lazy<List<Endpoint>>(() => hostAssembly
