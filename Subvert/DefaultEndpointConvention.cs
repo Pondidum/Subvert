@@ -14,6 +14,11 @@ namespace Subvert
 
 		public Boolean IsMatch(Type type)
 		{
+			if (type.IsPublic == false)
+			{
+				return false;
+			}
+
 			return type.Name.EndsWith("Endpoint", StringComparison.OrdinalIgnoreCase);
 		}
 	}

@@ -62,6 +62,7 @@
     <Compile Include="ConfigurationTests\RendererConfigurationTests\BeforeTests.cs" />
     <Compile Include="ConfigurationTests\RendererConfigurationTests\PrependTests.cs" />
     <Compile Include="ConfigurationTests\RendererConfigurationTests\RendererConfigurationTestBase.cs" />
+    <Compile Include="DefaultEndpointConventionTests.cs" />
     <Compile Include="EndpointTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
