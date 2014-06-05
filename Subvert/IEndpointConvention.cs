@@ -2,7 +2,7 @@ using System;
 
 namespace Subvert
 {
-	public interface IEndpointNamingConvention
+	public interface IEndpointConvention
 	{
 		string GetName(Type type);
 		Boolean IsMatch(Type type);

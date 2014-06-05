@@ -25,6 +25,9 @@ namespace Subvert
 			For<IViewRendererFactory>()
 				.Singleton();
 
+			For<IEndpointConvention>()
+				.Use<DefaultEndpointConvention>();
+
 			For<IFrontController>()
 				.Use<FrontController>()
 				.Singleton();

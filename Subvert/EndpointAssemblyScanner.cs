@@ -6,10 +6,10 @@ namespace Subvert
 {
 	public class EndpointAssemblyScanner : IEndpointStore
 	{
-		private readonly IEndpointNamingConvention _namingConvention;
+		private readonly IEndpointConvention _namingConvention;
 		private readonly Lazy<List<Endpoint>> _types;
 
-		public EndpointAssemblyScanner(IHostAssembly hostAssembly, IEndpointNamingConvention namingConvention)
+		public EndpointAssemblyScanner(IHostAssembly hostAssembly, IEndpointConvention namingConvention)
 		{
 			_namingConvention = namingConvention;
 			_types = new Lazy<List<Endpoint>>(() => hostAssembly
