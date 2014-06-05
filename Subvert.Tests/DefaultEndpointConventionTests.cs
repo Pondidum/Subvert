@@ -30,6 +30,12 @@ namespace Subvert.Tests.FrontControllerTests
 			_convention.IsMatch(typeof(PrivateEndpoint)).ShouldBeFalse();
 		}
 
+		[Fact]
+		public void When_getting_the_name_of_an_endpoint()
+		{
+			_convention.GetName(typeof(PublicEndpoint)).ShouldEqual("Public");
+		}
+
 		private class PrivateEndpoint { }
 	}
 
