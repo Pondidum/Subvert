@@ -71,12 +71,12 @@ namespace Subvert.Tests.FrontControllerTests
 
 		private class TestViewModel
 		{
-			
+
 		}
 
 		private class TestInputModel
 		{
-			
+
 		}
 	}
 

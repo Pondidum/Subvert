@@ -63,6 +63,7 @@
     <Compile Include="ConfigurationTests\RendererConfigurationTests\PrependTests.cs" />
     <Compile Include="ConfigurationTests\RendererConfigurationTests\RendererConfigurationTestBase.cs" />
     <Compile Include="DefaultEndpointConventionTests.cs" />
+    <Compile Include="EndpointActionTests.cs" />
     <Compile Include="EndpointAssemblyScannerTests.cs">
       <SubType>Code</SubType>
     </Compile>

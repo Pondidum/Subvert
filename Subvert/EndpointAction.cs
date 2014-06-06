@@ -8,16 +8,20 @@ namespace Subvert
 	{
 		private readonly MethodInfo _method;
 
-		public EndpointAction(Endpoint endpoint,MethodInfo method)
+		public EndpointAction(Endpoint endpoint, MethodInfo method)
 		{
+			EndpointType = endpoint.Type;
 			_method = method;
 
-			InputModelType = method
+			var parameter = method
 				.GetParameters()
-				.Single()
-				.ParameterType;
+				.SingleOrDefault();
 
-			EndpointType = endpoint.Type;
+			if (parameter != null)
+			{
+				InputModelType = parameter.ParameterType;
+			}
+
 		}
 
 		public Type InputModelType { get; private set; }
