@@ -57,6 +57,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionExecutorTests.cs" />
     <Compile Include="ConfigurationTests\RendererConfigurationTests\AfterTests.cs" />
     <Compile Include="ConfigurationTests\RendererConfigurationTests\AppendTests.cs" />
     <Compile Include="ConfigurationTests\RendererConfigurationTests\BeforeTests.cs" />
