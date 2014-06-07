@@ -22,7 +22,7 @@ namespace Subvert.Tests.FrontControllerTests
 			_action.EndpointType.Returns(typeof(TestEndpoint));
 			_action.Run(Arg.Any<object>(), Arg.Any<object>()).Returns(new TestViewModel());
 
-			var executor = new ActionExecutor(resolver, Substitute.For<IModelBinder>());
+			var executor = new ActionExecutor(resolver, Substitute.For<IModelBindingController>());
 
 			_runTest = () => executor.Execute(Substitute.For<IRequest>(), _action);
 		}

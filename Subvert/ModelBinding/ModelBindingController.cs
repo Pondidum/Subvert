@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace Subvert.ModelBinding
 {
-	public class ModelBinder
+	public class ModelBindingController : IModelBindingController
 	{
 		private readonly IEnumerable<IModelBinder> _binders;
 
-		public ModelBinder(IEnumerable<IModelBinder> binders)
+		public ModelBindingController(IEnumerable<IModelBinder> binders)
 		{
 			_binders = binders;
 		}

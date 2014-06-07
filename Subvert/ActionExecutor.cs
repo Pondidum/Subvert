@@ -5,12 +5,12 @@ namespace Subvert
 	public class ActionExecutor
 	{
 		private readonly IRequestResolver _resolver;
-		private readonly IModelBinder _modelBinder;
+		private readonly IModelBindingController _modelBindingController;
 
-		public ActionExecutor(IRequestResolver resolver, IModelBinder modelBinder)
+		public ActionExecutor(IRequestResolver resolver, IModelBindingController modelBindingController)
 		{
 			_resolver = resolver;
-			_modelBinder = modelBinder;
+			_modelBindingController = modelBindingController;
 		}
 
 		public object Execute(IRequest request, IEndpointAction action)
@@ -21,7 +21,7 @@ namespace Subvert
 			if (action.InputModelType != null)
 			{
 				inputModel = _resolver.GetInstance(action.InputModelType);
-				_modelBinder.Bind(request, inputModel);
+				_modelBindingController.Bind(request, inputModel);
 			}
 
 			return action.Run(instance, inputModel);
