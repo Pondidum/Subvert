@@ -15,7 +15,7 @@ namespace Subvert
 			Name = endpointName;
 		}
 
-		public EndpointAction GetAction(string httpMethod, string name)
+		public IEndpointAction GetAction(string httpMethod, string name)
 		{
 			var methods = Type
 				.GetMethods(BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance)

@@ -56,6 +56,7 @@
     <Compile Include="EndpointAction.cs" />
     <Compile Include="EndpointAssemblyScanner.cs" />
     <Compile Include="HttpStatus.cs" />
+    <Compile Include="IEndpointAction.cs" />
     <Compile Include="IEndpointConvention.cs" />
     <Compile Include="IFrontController.cs" />
     <Compile Include="IEndpointStore.cs" />

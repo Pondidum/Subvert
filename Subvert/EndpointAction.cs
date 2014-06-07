@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace Subvert
 {
-	public class EndpointAction
+	public class EndpointAction : IEndpointAction
 	{
 		private readonly MethodInfo _method;
 

@@ -9,7 +9,7 @@
 			_endpoints = endpoints;
 		}
 
-		public EndpointAction GetAction(RouteData route)
+		public IEndpointAction GetAction(RouteData route)
 		{
 			var endpoint = _endpoints.GetEndpointByName(route.Endpoint);
 

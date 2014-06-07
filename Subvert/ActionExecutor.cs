@@ -13,7 +13,7 @@ namespace Subvert
 			_modelBinder = modelBinder;
 		}
 
-		public object Execute(IRequest request, EndpointAction action)
+		public object Execute(IRequest request, IEndpointAction action)
 		{
 			var instance = _resolver.GetInstance(action.EndpointType);
 			var inputModel = _resolver.GetInstance(action.InputModelType);
