@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Linq;
 using NSubstitute;
 using Should;
@@ -53,6 +54,28 @@ namespace Subvert.Tests.FrontControllerTests
 			var es = new EndpointAssemblyScanner(_hostAssembly, _endpointConvention);
 
 			es.GetEndpoints().Single().Name.ShouldEqual("Private");
+		}
+
+		[Fact]
+		public void When_getting_an_assmebly_by_name()
+		{
+			_hostAssembly.AllTypes.Returns(AllEndpoints);
+			_endpointConvention.IsMatch(Arg.Any<Type>()).Returns(true);
+
+			var es = new EndpointAssemblyScanner(_hostAssembly, _endpointConvention);
+
+			es.GetEndpointByName("Private").Type.ShouldEqual(typeof(PrivateEndpoint));
+		}
+
+		[Fact]
+		public void When_getting_an_assembly_by_type()
+		{
+			_hostAssembly.AllTypes.Returns(AllEndpoints);
+			_endpointConvention.IsMatch(Arg.Any<Type>()).Returns(true);
+
+			var es = new EndpointAssemblyScanner(_hostAssembly, _endpointConvention);
+
+			es.GetEndpointByType(typeof(PrivateEndpoint)).Type.ShouldEqual(typeof(PrivateEndpoint));
 		}
 
 		private readonly static Type[] AllEndpoints =

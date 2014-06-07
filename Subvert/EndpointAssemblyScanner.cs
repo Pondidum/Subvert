@@ -28,5 +28,10 @@ namespace Subvert
 		{
 			return _types.Value.FirstOrDefault(e => e.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
 		}
+
+		public Endpoint GetEndpointByType(Type type)
+		{
+			return _types.Value.FirstOrDefault(e => e.Type == type);
+		}
 	}
 }
