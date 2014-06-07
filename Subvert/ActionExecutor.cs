@@ -16,9 +16,13 @@ namespace Subvert
 		public object Execute(IRequest request, IEndpointAction action)
 		{
 			var instance = _resolver.GetInstance(action.EndpointType);
-			var inputModel = _resolver.GetInstance(action.InputModelType);
+			object inputModel = null;
 
-			_modelBinder.Bind(request, inputModel);
+			if (action.InputModelType != null)
+			{
+				inputModel = _resolver.GetInstance(action.InputModelType);
+				_modelBinder.Bind(request, inputModel);
+			}
 
 			return action.Run(instance, inputModel);
 		}
