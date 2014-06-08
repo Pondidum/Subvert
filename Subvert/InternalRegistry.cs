@@ -1,5 +1,6 @@
 ﻿using StructureMap.Configuration.DSL;
 using StructureMap.Graph;
+using Subvert.Configuration;
 using Subvert.ModelBinding;
 using Subvert.ViewRendering;
 
@@ -25,12 +26,11 @@ namespace Subvert
 			For<IViewRendererFactory>()
 				.Singleton();
 
+			For<RouteConfiguration>()
+				.Singleton();
+
 			For<IEndpointConvention>()
 				.Use<DefaultEndpointConvention>();
-
-			For<IFrontController>()
-				.Use<FrontController>()
-				.Singleton();
 		}
 	}
 }

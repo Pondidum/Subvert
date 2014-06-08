@@ -4,7 +4,7 @@ using StructureMap.Graph;
 
 namespace Subvert.Configuration
 {
-	public class SubvertApplication<T> where T :SubvertConfiguration
+	public class SubvertApplication<T> where T : SubvertConfiguration
 	{
 		private readonly IContainer _container;
 

@@ -3,6 +3,7 @@ using Subvert;
 using Subvert.Configuration;
 using Subvert.Spark;
 using Subvert.WebApi;
+using SubvertedApi.Features.Home;
 
 namespace SubvertedApi
 {
@@ -30,6 +31,8 @@ namespace SubvertedApi
 		public override void Configure()
 		{
 			Renderers.Append<SparkViewRenderer>();
+
+			Routes.HomeIs<HomeEndpoint>();
 		}
 	}
 }

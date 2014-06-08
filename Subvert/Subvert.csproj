@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="ActionExecutor.cs" />
     <Compile Include="Configuration\ConfigurationBuilder.cs" />
+    <Compile Include="Configuration\RouteConfiguration.cs" />
     <Compile Include="Configuration\SubvertApplication.cs" />
     <Compile Include="Configuration\SubvertConfiguration.cs" />
     <Compile Include="Configuration\RendererAlreadyRegisteredException.cs" />

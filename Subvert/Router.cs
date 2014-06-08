@@ -1,17 +1,23 @@
-﻿namespace Subvert
+﻿using Subvert.Configuration;
+
+namespace Subvert
 {
 	public class Router
 	{
+		private readonly RouteConfiguration _configuration;
 		private readonly IEndpointStore _endpoints;
 
-		public Router(IEndpointStore endpoints)
+		public Router(RouteConfiguration configuration, IEndpointStore endpoints)
 		{
+			_configuration = configuration;
 			_endpoints = endpoints;
 		}
 
 		public IEndpointAction GetAction(RouteData route)
 		{
-			var endpoint = _endpoints.GetEndpointByName(route.Endpoint);
+			var endpoint = route.Endpoint != null 
+				? _endpoints.GetEndpointByName(route.Endpoint) 
+				: _endpoints.GetEndpointByType(_configuration.HomeEndpoint);
 
 			if (endpoint == null)
 			{
