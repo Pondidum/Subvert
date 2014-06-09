@@ -21,6 +21,7 @@ namespace Subvert
 
 			For<IEndpointStore>()
 				.Use<EndpointAssemblyScanner>()
+				.DecorateWith((c, x) => new DefaultEndpointStore(c.GetInstance<RouteConfiguration>(), x))
 				.Singleton();
 
 			For<IViewRendererFactory>()
