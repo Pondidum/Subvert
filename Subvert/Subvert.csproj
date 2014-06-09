@@ -53,6 +53,7 @@
     <Compile Include="Configuration\RendererConfiguration.cs" />
     <Compile Include="Configuration\RendererExpression.cs" />
     <Compile Include="Configuration\RendererNotFoundException.cs" />
+    <Compile Include="DefaultEndpointStore.cs" />
     <Compile Include="Endpoint.cs" />
     <Compile Include="EndpointAction.cs" />
     <Compile Include="EndpointAssemblyScanner.cs" />
