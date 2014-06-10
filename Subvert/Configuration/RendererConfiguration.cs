@@ -6,16 +6,16 @@ namespace Subvert.Configuration
 {
 	public class RendererConfiguration
 	{
-		private readonly List<IViewRenderer> _renderers;
+		public List<IViewRenderer> Renderers { get; private set; }
 
-		public RendererConfiguration(IViewRendererFactory factory)
+		public RendererConfiguration(IEnumerable<IViewRenderer> renderers)
 		{
-			_renderers = factory.Renderers;
+			Renderers= renderers.ToList();
 		}
 
 		public void Append<TRenderer>() where TRenderer : IViewRenderer, new()
 		{
-			Add(_renderers.Count, new TRenderer());
+			Add(Renderers.Count, new TRenderer());
 		}
 
 		public void Prepend<TRenderer>() where TRenderer : IViewRenderer, new()
@@ -25,22 +25,22 @@ namespace Subvert.Configuration
 
 		public RendererExpression Before<TRenderer>() where TRenderer : IViewRenderer
 		{
-			return new RendererExpression(this, _renderers, typeof(TRenderer), 0);
+			return new RendererExpression(this, Renderers, typeof(TRenderer), 0);
 		}
 
 		public RendererExpression After<TRenderer>() where TRenderer : IViewRenderer
 		{
-			return new RendererExpression(this, _renderers, typeof(TRenderer), 1);
+			return new RendererExpression(this, Renderers, typeof(TRenderer), 1);
 		}
 
 		internal void Add<TRenderer>(int index, TRenderer instance) where TRenderer : IViewRenderer
 		{
 			var type = typeof(TRenderer);
 
-			if (_renderers.Any(r => r.GetType() == type))
+			if (Renderers.Any(r => r.GetType() == type))
 				throw new RendererAlreadyRegisteredException(type);
 
-			_renderers.Insert(index, instance);
+			Renderers.Insert(index, instance);
 		}
 	}
 }
