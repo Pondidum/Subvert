@@ -8,9 +8,9 @@ namespace Subvert.Configuration
 	{
 		public List<IViewRenderer> Renderers { get; private set; }
 
-		public RendererConfiguration(IEnumerable<IViewRenderer> renderers)
+		public RendererConfiguration(List<IViewRenderer> renderers)
 		{
-			Renderers= renderers.ToList();
+			Renderers = renderers;
 		}
 
 		public void Append<TRenderer>() where TRenderer : IViewRenderer, new()

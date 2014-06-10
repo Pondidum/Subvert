@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using NSubstitute;
-using StructureMap;
-using StructureMap.Graph;
+﻿using System.Collections.Generic;
 using Subvert.Configuration;
 using Subvert.ViewRendering;
 
@@ -17,11 +12,7 @@ namespace Subvert.Tests.ConfigurationTests.RendererConfigurationTests
 		public RendererConfigurationTestBase()
 		{
 			Renderers = new List<IViewRenderer>();
-
-			var factory = Substitute.For<IViewRendererFactory>();
-			factory.Renderers.Returns(Renderers);
-
-			Config = new RendererConfiguration(factory);
+			Config = new RendererConfiguration(Renderers);
 
 			AddAllRenderers();
 		}
